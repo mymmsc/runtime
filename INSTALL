@@ -62,20 +62,7 @@ alias ll="ls -l"
       ./configure --prefix=$MSF_APPS/httpd --enable-dav=shared --enable-proxy=shared --enable-proxy-connect=shared --enable-proxy-ftp=shared --enable-proxy-http=shared --enable-so --enable-shared --enable-rewrite=shared --disable-userdir --enable-cache --enable-disk-cache --enable-mem-cache --enable-deflate --enable-ssl --enable-headers --enable-vhost-alias --with-mpm=event --with-mpm=worker --with-mpm=prefork --with-status --with-ssl=$MSF_APPS --enable-module=so --enable-logio=shared --enable-dbd=shared --with-apr=$MSF_APPS --with-apr-util=$MSF_APPS
       a) httpd.conf 末尾增加
          Include /home/labs/conf/apache2/*.conf
-      b) cwap.conf
-ProxyRequests Off
-<Proxy 218.206.76.125:18081>
-Order deny,allow 
-Allow from all 
-</Proxy>
 
-NameVirtualHost 218.206.76.125:28081
-<VirtualHost 218.206.76.125:28081>
-    ServerName 218.206.76.125:28081
-    ServerAdmin 713858@qq.com
-    ProxyPass / http://222.178.152.45
-    ProxyPassReverse / http://222.178.152.45
-</VirtualHost>
 
 2. SQLite 3.7.x
    1) http://sqlite.org/sqlite-autoconf-3071000.tar.gz
