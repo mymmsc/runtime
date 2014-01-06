@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+        - Resin 4.0 configuration file.
+          -->
+<server xmlns="http://caucho.com/ns/resin"
+  xmlns:resin="urn:java:com.caucho.resin">
+  <database>
+    <jndi-name>jdbc/wifi</jndi-name>
+    <driver type="com.mysql.jdbc.Driver">
+      <url>jdbc:mysql://127.0.0.1:18036/wifi?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=round</url>
+      <user>runtime</user>
+      <password>GnJ3DyyXRN3CTtp6</password>
+    </driver>
+    <prepared-statement-cache-size>8</prepared-statement-cache-size>
+    <max-connections>5</max-connections>
+    <max-idle-time>30s</max-idle-time>
+  </database>
+</server>

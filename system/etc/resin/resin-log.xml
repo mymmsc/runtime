@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+        - Resin 4.0 configuration file.
+          -->
+<server xmlns="http://caucho.com/ns/resin"
+       xmlns:resin="urn:java:com.caucho.resin">
+<host-default>
+  <access-log path="log/access.log" format='%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-Agent}i"' archive-format="access.log.%Y-%m-%d" rollover-period="1D"/>
+  <stdout-log path="log/stdout.log" archive-format="stdout.log.%Y-%m-%d" rollover-period="1D"/>
+  <stderr-log path="log/stderr.log" archive-format="stderr.log.%Y-%m-%d" rollover-period="1D"/>
+</host-default>
+</server>
