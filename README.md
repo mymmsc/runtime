@@ -7,7 +7,7 @@ runtime
 
 相对根路径，如windows建议采用e:/runtime，Unix/Linux采用/home/runtime，结构如下：
 
-
+<pre>
 ${RUNTIME}            项目安装根路径
 |
 |-->apps            应用软件安装目录
@@ -54,3 +54,4 @@ ${RUNTIME}            项目安装根路径
 |      |-->webapps    J2EE工程目录
 
 
+</pre>
