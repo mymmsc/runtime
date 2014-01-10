@@ -35,7 +35,7 @@ ${RUNTIME}          项目安装根路径
 |   |-->profile.msf SHELL扩展配置文件
 |   |-->httpd       Apache扩展模块配置文件目录
 |   |-->nginx       Nginx扩展配置文件目录
-|   |-->resind      Resin Pro扩展配置文件目录
+|   |-->resin       Resin Pro扩展配置文件目录
 |
 |-->data            数据库等等数据文件
 |
