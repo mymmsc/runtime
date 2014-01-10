@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
         - Resin 4.0 configuration file.
-          -->
+        - 扩展 日志配置文件
+-->
 <server xmlns="http://caucho.com/ns/resin"
        xmlns:resin="urn:java:com.caucho.resin">
 <host-default>
