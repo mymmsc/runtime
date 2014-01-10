@@ -5,9 +5,9 @@
 <server xmlns="http://caucho.com/ns/resin"
   xmlns:resin="urn:java:com.caucho.resin">
   <database>
-    <jndi-name>jdbc/wifi</jndi-name>
+    <jndi-name>jdbc/demo</jndi-name>
     <driver type="com.mysql.jdbc.Driver">
-      <url>jdbc:mysql://127.0.0.1:18036/wifi?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=round</url>
+      <url>jdbc:mysql://127.0.0.1:18036/DEMO?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=round</url>
       <user>runtime</user>
       <password>GnJ3DyyXRN3CTtp6</password>
     </driver>
