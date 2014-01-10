@@ -19,14 +19,14 @@
       <tree-loader path="${resin.root}/${cluster.id}-inf"/>
       <tree-loader path="cloud:/${cluster.id}-inf"/>
     </class-loader>
-    
+
     <!-- include resources config files in resources/ -->
     <resin:import>
       <fileset dir="${MSF_RUNTIME}/etc/resin">
         <include>*.xml</include>
       </fileset>
     </resin:import>
-
+    
     <!-- enables development error pages -->
     <resin:if test="${dev_mode}">
       <development-mode-error-page/>
