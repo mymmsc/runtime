@@ -1,0 +1,9 @@
+	Source Insight 3.X 插件
+
+解压msimg32.dll sihook.dll siutf8.dll 到Source Insight 3.X安装目录
+
+msimg32.dll 引导程序(*)
+sihook.dll  标签插件(M)
+siutf8.dll  utf8插件(M)
+
+
