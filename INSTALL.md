@@ -1,10 +1,12 @@
 #### 一、前期准备
    1. 添加用户组
       <pre>groupadd runtime</pre>
-   2) 添加用户
+   2. 添加用户
+      <pre>
       useradd -g runtime system
       useradd -g runtime svn
       useradd -g runtime runtime
+      <pre>
    3) 编辑 .bashrc
    4) screen -S labs
       screen -X labs
