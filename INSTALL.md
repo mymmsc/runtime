@@ -1,12 +1,10 @@
-/**
- * $Id$
- * $$
- */
-I 准备帐户
+#### 一、前期准备
    1) 添加用户组
-      groupadd misc 
+      groupadd runtime 
    2) 添加用户
-      useradd -g misc labs
+      useradd -g runtime system
+      useradd -g runtime svn
+      useradd -g runtime runtime
    3) 编辑 .bashrc
    4) screen -S labs
       screen -X labs
