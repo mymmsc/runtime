@@ -2,20 +2,17 @@
    1. 添加用户组
       <pre>groupadd runtime</pre>
    2. 添加用户
-      <pre>
-      useradd -g runtime system
-      useradd -g runtime svn
-      useradd -g runtime runtime
-      </pre>
+<pre>useradd -g runtime system
+useradd -g runtime svn
+useradd -g runtime runtime
+</pre>
    3. 编辑 .bashrc
    4. screen -S labs
       screen -X labs
 
    5. 修改linux的软硬件限制文件/etc/security/limits.conf. 在文件尾部添加如下代码:
-<pre>
- * soft nofile 65535
- * hard nofile 65535
-</pre>
+<pre>* soft nofile 65535
+* hard nofile 65535</pre>
 
    6. 修改当前用户的 .bashrc, 添加以下内容
 <pre>
