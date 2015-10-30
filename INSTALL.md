@@ -25,7 +25,8 @@ alias ls="myls"
 alias ll="ls -l"
 </pre>
 
-0. 开发环境
+   7. 开发环境
+<pre>
    1) ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2
    2) http://ftp.gnu.org/gnu/m4/m4-1.4.13.tar.bz2
    2) http://ftp.gnu.org/gnu/autoconf/autoconf-2.64.tar.bz2
@@ -43,7 +44,7 @@ alias ll="ls -l"
         perl> perl -MCPAN -e "install DBD::mysql"
       b. http://www.cpan.org/modules/by-module/DBD/DBI-1.608.tar.gz
          http://www.cpan.org/modules/by-module/DBD/DBD-mysql-4.011.tar.gz
-   9) 
+</pre> 
 1. httpd-2.4.x
    1) http://www.openssl.org/source/openssl-1.0.0g.tar.gz      
       a) ./config --prefix=$MSF_RUNTIME --openssldir=$MSF_APPS/openssl no-threads shared
