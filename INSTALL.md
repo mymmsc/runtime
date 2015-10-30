@@ -6,23 +6,19 @@
       useradd -g runtime system
       useradd -g runtime svn
       useradd -g runtime runtime
-      <pre>
-   3) 编辑 .bashrc
-   4) screen -S labs
+      </pre>
+   3. 编辑 .bashrc
+   4. screen -S labs
       screen -X labs
 
-   5) 修改linux的软硬件限制文件/etc/security/limits.conf. 在文件尾部添加如下代码： 
+   5. 修改linux的软硬件限制文件/etc/security/limits.conf. 在文件尾部添加如下代码:
+   <pre>
 *       soft    nofile  65535
 *       hard    nofile  65535
+   </pre>
 
-
-   6) 修改当前用户的 .bashrc
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-        . /etc/bash.bashrc
-fi
-
+   6. 修改当前用户的 .bashrc, 添加以下内容
+<pre>
 # User specific aliases and functions
 if [ -f ~/etc/profile.msf ]; then
         . ~/etc/profile.msf
@@ -30,6 +26,7 @@ fi
 alias myls="ls --color=auto"
 alias ls="myls"
 alias ll="ls -l"
+</pre>
 
 0. 开发环境
    1) ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2
