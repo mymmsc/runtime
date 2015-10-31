@@ -13,10 +13,10 @@ useradd -g runtime runtime
       screen -X labs
 
    5. 修改linux的软硬件限制文件/etc/security/limits.conf. 在文件尾部添加如下代码:
-```Bash
+    ```Bash
     * soft nofile 65535
     * hard nofile 65535
-```
+    ```
 
    6. 修改当前用户的 .bashrc, 添加以下内容
 <pre>
