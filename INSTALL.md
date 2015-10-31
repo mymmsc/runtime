@@ -51,8 +51,9 @@ alias ll="ls -l"
         perl> perl -MCPAN -e "install DBD::mysql"
       b. http://www.cpan.org/modules/by-module/DBD/DBI-1.608.tar.gz
          http://www.cpan.org/modules/by-module/DBD/DBD-mysql-4.011.tar.gz
-</pre> 
-1. httpd-2.4.x
+</pre>
+
+#### 二、httpd-2.4.x
    1) http://www.openssl.org/source/openssl-1.0.0g.tar.gz      
       a) ./config --prefix=$MSF_RUNTIME --openssldir=$MSF_APPS/openssl no-threads shared
    2) http://archive.apache.org/dist/httpd/httpd-2.4.7.tar.bz2
@@ -66,7 +67,7 @@ alias ll="ls -l"
          Include /home/labs/conf/apache2/*.conf
 
 
-2. SQLite 3.7.x
+#### 三、SQLite 3.7.x
    1) http://sqlite.org/sqlite-autoconf-3071000.tar.gz
    2) 编译
      ./configure --prefix=$MSF_RUNTIME --enable-threadsafe --enable-cross-thread-connections --disable-tcl --enable-threads-override-locks
@@ -74,7 +75,7 @@ alias ll="ls -l"
    3) http://download.oracle.com/berkeley-db/db-5.3.15.tar.gz
       > cd build_unix
       > ../dist/configure --prefix=$MSF_RUNTIME --enable-java
-3. MySQL Server
+#### 四、MySQL Server
    1) http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.73.tar.gz/from/http://mysql.he.net/
       a. apt-cache search ncurses
       b. sudo apt-get install libncurses5-dev
@@ -105,7 +106,7 @@ alias ll="ls -l"
    6) 创建所有权限的新用户
      > Grant all privileges on *.* to 'runtime'@'%' identified by ‘123456’ with grant option;
 
-4. 安装 Subversion
+#### 五、安装 Subversion
    1) 下载软件包
      a. http://www.webdav.org/neon/neon-0.28.4.tar.gz
      b. http://apache.etoak.com/apr/apr-1.3.5.tar.bz2
@@ -121,7 +122,7 @@ alias ll="ls -l"
      b. subversion-1.7.3
         ./configure --prefix=$MSF_RUNTIME --with-apxs=$MSF_APPS/httpd/bin/apxs --with-apr=$MSF_RUNTIME --with-apr-util=$MSF_RUNTIME --with-sqlite=$MSF_RUNTIME --with-berkeley-db=HEADER:$MSF_RUNTIME/db40/include:LIB_SEARCH_DIRS:$MSF_RUNTIME/db40/lib
 
-5. 安装 php
+#### 六、安装 php
    http://www.zlib.net/zlib-1.2.3.tar.gz
    ftp://xmlsoft.org/libxml2/libxml2-2.7.3.tar.gz
    http://downloads.sourceforge.net/sourceforge/mcrypt/libmcrypt-2.6.8.tar.bz2?use_mirror=jaist
@@ -147,10 +148,7 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
 # service httpd restart
 # setenforce 1
 
-6. 安装glib2 
-   1)  http://download.gnome.org/sources/glib/2.22/glib-2.22.0.tar.bz2
-
-7. 安装Resin
+#### 七、安装Resin
    0) 设定临时环境变量
       RESIN_VERSION=4.0.36
    1) 直接下载: 
@@ -161,7 +159,7 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
    ./configure --prefix=$MSF_APPS/resin-pro-${RESIN_VERSION} --with-openssl=$MSF_RUNTIME --with-resin-log=$MSF_RUNTIME/logs/resin --with-resin-init.d=$MSF_APPS/resin-pro-${RESIN_VERSION}/sbin/resin.server
    3) sed -i -e 's/root-directory="."/root-directory="$MSF_RUNTIME\/html\/webapps"/g' $MSF_APPS/resin/conf/resin.xml
 
-8. 安装Nginx
+#### 八、安装Nginx
    1) https://nginx-upstream-jvm-route.googlecode.com/files/nginx-upstream-jvm-route-0.1.tar.gz
    2) patch -p0 < ../nginx-upstream-jvm-route/jvm_route.patch
    3) export NGINX_VER=1.5.2
@@ -169,9 +167,9 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
    4) chown root nginx
    5) chmod u+s nginx
 
-9. 安装Subversion
+#### 九、其它
 
-
+<pre>
 
 SUPPORTED=en_US.UTF-8:en_US:en:zh_CN.GB18030:zh_CN:zh:zh_TW.big5:zh_TW:zh:ja_JP.UTF-8:ja_JP:ja:ko_KR.eucKR:ko_KR:ko
 
@@ -333,3 +331,4 @@ CentOS配置SSH证书登录验证:
 for i in `ls *.png`; do pngcrush -revert-iphone-optimizations $i ../$i; done
 >> 批量修改文件编码
 find ./ -name *.java -exec sh -c "cp {} {}.bak;iconv -f gb18030 -t UTF8 {} > abc.a; mv abc.a  {}" \;
+</pre>
