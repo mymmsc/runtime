@@ -1,8 +1,8 @@
 #### 一、前期准备
    1. 添加用户组
-    ```Bash   
+    ```Bash
       groupadd runtime
-    ``` 
+    ```
    2. 添加用户
 <pre>useradd -g runtime system
 useradd -g runtime svn
