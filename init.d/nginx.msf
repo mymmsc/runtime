@@ -1,0 +1,42 @@
+#!/bin/bash
+#chkconfig:2345 80 05
+#description:nginx service
+
+RETVAL=0
+app=/home/system/runtime/apps/nginx
+
+start() {
+  echo -n "nginx service start ..."
+  cd $app
+  su system -c "$app/sbin/nginx"
+  echo "success"
+}
+stop() {
+  echo -n "nginx service stop ..."
+  cd $app
+  su system -c "$app/sbin/nginx -s stop"
+  echo "success"
+}
+restart() {
+  echo -n "nginx service restart ..."
+  cd $app
+  su system -c "$app/sbin/nginx -s reload"
+  echo "success"
+}
+
+case $1 in
+  start)
+    start
+    ;;
+
+  stop)
+    stop
+    ;;
+  restart)
+    stop
+    start
+    ;;
+esac
+
+exit $RETVAL
+
