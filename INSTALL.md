@@ -130,6 +130,8 @@ alias ll="ls -l"
    1) http://cn.php.net/get/php-5.4.23.tar.bz2/from/cn2.php.net/mirror
       http://cn2.php.net/get/php-5.5.7.tar.bz2/from/this/mirror
    2) 编译
+   ./configure --prefix=$MSF_APPS/php  --enable-fpm --with-mcrypt --enable-mbstring --disable-pdo --with-curl --disable-debug  --disable-rpath --enable-inline-optimization --with-bz2  --with-zlib --enable-sockets  --enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex  --with-mhash --enable-zip  -with-pcre-regex --with-mysql --with-mysqli --with-gd --with-jpeg-dir
+
      ./configure --prefix=$MSF_APPS/php --with-apxs2=$MSF_APPS/httpd/bin/apxs --with-config-file-path=$MSF_APPS/php/etc --with-curl=$MSF_RUNTIME --with-gettext --with-iconv --with-openssl=$MSF_RUNTIME --with-zlib=/usr --enable-ftp --enable-sockets --enable-wddx --enable-mbstring=all --enable-calendar --with-libxml-dir=$MSF_RUNTIME --enable-bcmath --enable-shmop --with-gd --with-mysql=$MSF_APPS/mysql --with-mysqli=$MSF_APPS/mysql/bin/mysql_config --with-mcrypt=$MSF_RUNTIME --with-png-dir=$MSF_RUNTIME --enable-fpm --with-pdo-mysql=$MSF_APPS/mysql
    3) https://phpmyadmin.svn.sourceforge.net/svnroot/phpmyadmin/trunk/phpMyAdmin/libraries/
    4) http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.1.2/phpMyAdmin-4.1.2-all-languages.zip?r=http%3A%2F%2Fwww.phpmyadmin.net%2Fhome_page%2Findex.php&ts=1388101651&use_mirror=jaist
