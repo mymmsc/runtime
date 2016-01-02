@@ -1,0 +1,3 @@
+[submodule "soft/nginx/nginx"]
+	path = soft/nginx/nginx
+	url = https://github.com/nginx/nginx.git
