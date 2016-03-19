@@ -55,13 +55,21 @@ alias ll="ls -l"
 </pre>
 
 #### 一、安装Nginx
-   1) https://nginx-upstream-jvm-route.googlecode.com/files/nginx-upstream-jvm-route-0.1.tar.gz
-   1.1)git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
-   2) patch -p0 < ../nginx-upstream-jvm-route/jvm_route.patch
-   3) 编译、安装
+   0) 软件包准备
+      (patch -p0 < ../nginx-upstream-jvm-route/jvm_route.patch)
+      https://nginx-upstream-jvm-route.googlecode.com/files/nginx-upstream-jvm-route-0.1.tar.gz
+      https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
+
+   1) 编译安装步骤
    ```Bash
-   export NGINX_VER=1.5.2
-  ./configure --prefix=$MSF_APPS/nginx --pid-path=$MSF_APPS/nginx/nginx.pid --lock-path=$MSF_APPS/nginx/nginx.lock --with-http_ssl_module --with-http_dav_module --with-http_flv_module --with-http_realip_module --with-http_gzip_static_module --with-http_stub_status_module --with-mail --with-mail_ssl_module --with-pcre=$MSF_RUNTIME/temp/pcre-8.36 --with-zlib=$MSF_RUNTIME/temp/zlib-1.2.8 --http-client-body-temp-path=$MSF_RUNTIME/tmp/nginx/client --http-proxy-temp-path=$MSF_RUNTIME/tmp/nginx/proxy --http-fastcgi-temp-path=$MSF_RUNTIME/tmp/nginx/fastcgi --http-uwsgi-temp-path=$MSF_RUNTIME/tmp/nginx/uwsgi --http-scgi-temp-path=$MSF_RUNTIME/tmp/nginx/scgi --add-module=../nginx-upstream-jvm-route
+   cd /data/runtime/temp
+   git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
+   wget http://nginx.org/download/nginx-1.8.1.tar.gz
+   tar zxvf nginx-1.8.1.tar.gz
+   export NGINX_VER=1.8.1
+   ./configure --prefix=$MSF_APPS/nginx --pid-path=$MSF_APPS/nginx/nginx.pid --lock-path=$MSF_APPS/nginx/nginx.lock --with-http_ssl_module --with-http_dav_module --with-http_flv_module --with-http_realip_module --with-http_gzip_static_module --with-http_stub_status_module --with-mail --with-mail_ssl_module --with-pcre=$MSF_RUNTIME/temp/pcre-8.36 --with-zlib=$MSF_RUNTIME/temp/zlib-1.2.8 --http-client-body-temp-path=$MSF_RUNTIME/tmp/nginx/client --http-proxy-temp-path=$MSF_RUNTIME/tmp/nginx/proxy --http-fastcgi-temp-path=$MSF_RUNTIME/tmp/nginx/fastcgi --http-uwsgi-temp-path=$MSF_RUNTIME/tmp/nginx/uwsgi --http-scgi-temp-path=$MSF_RUNTIME/tmp/nginx/scgi --add-module=../nginx-sticky-module-ng
+
+   # 非root用户，需要从root账号赋予nginx在1024端口好以下进程运行的权限
    chown root nginx
    chmod u+s nginx
    ```
