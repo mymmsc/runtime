@@ -46,8 +46,10 @@ alias ll="ls -l"
    8) perl 
       -). http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/perl-5.12.3.tar.gz
       a. PERL安装MySQL库
+      ```Bash
         perl> perl -MCPAN -e "install DBI"
         perl> perl -MCPAN -e "install DBD::mysql"
+      ```
       b. http://www.cpan.org/modules/by-module/DBD/DBI-1.608.tar.gz
          http://www.cpan.org/modules/by-module/DBD/DBD-mysql-4.011.tar.gz
 </pre>
@@ -162,13 +164,22 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
 
 #### 八、安装Nginx
    1) https://nginx-upstream-jvm-route.googlecode.com/files/nginx-upstream-jvm-route-0.1.tar.gz
+   1.1)git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
    2) patch -p0 < ../nginx-upstream-jvm-route/jvm_route.patch
-   3) export NGINX_VER=1.5.2
-  ./configure --prefix=$MSF_APPS/nginx --pid-path=$MSF_APPS/nginx/nginx.pid --lock-path=$MSF_APPS/nginx/nginx.lock --with-http_ssl_module --with-http_dav_module --with-http_flv_module --with-http_realip_module --with-http_gzip_static_module --with-http_stub_status_module --with-mail --with-mail_ssl_module --with-pcre=$MSF_RUNTIME/temp/pcre-8.33 --with-zlib=$MSF_RUNTIME/temp/zlib-1.2.8 --http-client-body-temp-path=$MSF_RUNTIME/tmp/nginx/client --http-proxy-temp-path=$MSF_RUNTIME/tmp/nginx/proxy --http-fastcgi-temp-path=$MSF_RUNTIME/tmp/nginx/fastcgi --http-uwsgi-temp-path=$MSF_RUNTIME/tmp/nginx/uwsgi --http-scgi-temp-path=$MSF_RUNTIME/tmp/nginx/scgi --add-module=../nginx-upstream-jvm-route
-   4) chown root nginx
-   5) chmod u+s nginx
+   3) 编译、安装
+   ```Bash
+   export NGINX_VER=1.5.2
+  ./configure --prefix=$MSF_APPS/nginx --pid-path=$MSF_APPS/nginx/nginx.pid --lock-path=$MSF_APPS/nginx/nginx.lock --with-http_ssl_module --with-http_dav_module --with-http_flv_module --with-http_realip_module --with-http_gzip_static_module --with-http_stub_status_module --with-mail --with-mail_ssl_module --with-pcre=$MSF_RUNTIME/temp/pcre-8.36 --with-zlib=$MSF_RUNTIME/temp/zlib-1.2.8 --http-client-body-temp-path=$MSF_RUNTIME/tmp/nginx/client --http-proxy-temp-path=$MSF_RUNTIME/tmp/nginx/proxy --http-fastcgi-temp-path=$MSF_RUNTIME/tmp/nginx/fastcgi --http-uwsgi-temp-path=$MSF_RUNTIME/tmp/nginx/uwsgi --http-scgi-temp-path=$MSF_RUNTIME/tmp/nginx/scgi --add-module=../nginx-upstream-jvm-route
+   chown root nginx
+   chmod u+s nginx
+   ```
 
 #### 九、其它
+1）tomcat7优化
+JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8
+-server -Xms1024m -Xmx1024m
+-XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m
+-XX:MaxPermSize=512m -XX:+DisableExplicitGC"
 
 <pre>
 
