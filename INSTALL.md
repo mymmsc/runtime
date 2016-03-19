@@ -1,4 +1,4 @@
-#### 一、前期准备
+#### 〇、前期准备
 
    1. 添加用户组
     ```Bash
@@ -54,7 +54,20 @@ alias ll="ls -l"
          http://www.cpan.org/modules/by-module/DBD/DBD-mysql-4.011.tar.gz
 </pre>
 
+#### 一、安装Nginx
+   1) https://nginx-upstream-jvm-route.googlecode.com/files/nginx-upstream-jvm-route-0.1.tar.gz
+   1.1)git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
+   2) patch -p0 < ../nginx-upstream-jvm-route/jvm_route.patch
+   3) 编译、安装
+   ```Bash
+   export NGINX_VER=1.5.2
+  ./configure --prefix=$MSF_APPS/nginx --pid-path=$MSF_APPS/nginx/nginx.pid --lock-path=$MSF_APPS/nginx/nginx.lock --with-http_ssl_module --with-http_dav_module --with-http_flv_module --with-http_realip_module --with-http_gzip_static_module --with-http_stub_status_module --with-mail --with-mail_ssl_module --with-pcre=$MSF_RUNTIME/temp/pcre-8.36 --with-zlib=$MSF_RUNTIME/temp/zlib-1.2.8 --http-client-body-temp-path=$MSF_RUNTIME/tmp/nginx/client --http-proxy-temp-path=$MSF_RUNTIME/tmp/nginx/proxy --http-fastcgi-temp-path=$MSF_RUNTIME/tmp/nginx/fastcgi --http-uwsgi-temp-path=$MSF_RUNTIME/tmp/nginx/uwsgi --http-scgi-temp-path=$MSF_RUNTIME/tmp/nginx/scgi --add-module=../nginx-upstream-jvm-route
+   chown root nginx
+   chmod u+s nginx
+   ```
+
 #### 二、httpd-2.4.x
+<pre>
    1) http://www.openssl.org/source/openssl-1.0.0g.tar.gz      
       a) ./config --prefix=$MSF_RUNTIME --openssldir=$MSF_APPS/openssl no-threads shared
    2) http://archive.apache.org/dist/httpd/httpd-2.4.7.tar.bz2
@@ -66,7 +79,7 @@ alias ll="ls -l"
       ./configure --prefix=$MSF_APPS/httpd --enable-dav=shared --enable-proxy=shared --enable-proxy-connect=shared --enable-proxy-ftp=shared --enable-proxy-http=shared --enable-so --enable-shared --enable-rewrite=shared --disable-userdir --enable-cache --enable-disk-cache --enable-mem-cache --enable-deflate --enable-ssl --enable-headers --enable-vhost-alias --with-mpm=event --with-mpm=worker --with-mpm=prefork --with-status --with-ssl=$MSF_APPS --enable-module=so --enable-logio=shared --enable-dbd=shared --with-apr=$MSF_APPS --with-apr-util=$MSF_APPS
       a) httpd.conf 末尾增加
          Include /home/labs/conf/apache2/*.conf
-
+</pre>
 
 #### 三、SQLite 3.7.x
    1) http://sqlite.org/sqlite-autoconf-3071000.tar.gz
@@ -162,36 +175,18 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
    ./configure --prefix=$MSF_APPS/resin-pro-${RESIN_VERSION} --with-openssl=$MSF_RUNTIME --with-resin-log=$MSF_RUNTIME/logs/resin --with-resin-init.d=$MSF_APPS/resin-pro-${RESIN_VERSION}/sbin/resin.server
    3) sed -i -e 's/root-directory="."/root-directory="$MSF_RUNTIME\/html\/webapps"/g' $MSF_APPS/resin/conf/resin.xml
 
-#### 八、安装Nginx
-   1) https://nginx-upstream-jvm-route.googlecode.com/files/nginx-upstream-jvm-route-0.1.tar.gz
-   1.1)git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
-   2) patch -p0 < ../nginx-upstream-jvm-route/jvm_route.patch
-   3) 编译、安装
-   ```Bash
-   export NGINX_VER=1.5.2
-  ./configure --prefix=$MSF_APPS/nginx --pid-path=$MSF_APPS/nginx/nginx.pid --lock-path=$MSF_APPS/nginx/nginx.lock --with-http_ssl_module --with-http_dav_module --with-http_flv_module --with-http_realip_module --with-http_gzip_static_module --with-http_stub_status_module --with-mail --with-mail_ssl_module --with-pcre=$MSF_RUNTIME/temp/pcre-8.36 --with-zlib=$MSF_RUNTIME/temp/zlib-1.2.8 --http-client-body-temp-path=$MSF_RUNTIME/tmp/nginx/client --http-proxy-temp-path=$MSF_RUNTIME/tmp/nginx/proxy --http-fastcgi-temp-path=$MSF_RUNTIME/tmp/nginx/fastcgi --http-uwsgi-temp-path=$MSF_RUNTIME/tmp/nginx/uwsgi --http-scgi-temp-path=$MSF_RUNTIME/tmp/nginx/scgi --add-module=../nginx-upstream-jvm-route
-   chown root nginx
-   chmod u+s nginx
-   ```
 
 #### 九、其它
 1）tomcat7优化
+<pre>
 JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8
 -server -Xms1024m -Xmx1024m
 -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m
 -XX:MaxPermSize=512m -XX:+DisableExplicitGC"
-
+</pre>
 <pre>
 
 SUPPORTED=en_US.UTF-8:en_US:en:zh_CN.GB18030:zh_CN:zh:zh_TW.big5:zh_TW:zh:ja_JP.UTF-8:ja_JP:ja:ko_KR.eucKR:ko_KR:ko
-
-
-
-
-
-
-
-
 
 [root@localhost root]# more /etc/sysconfig/clock
 ZONE="America/New_York"
