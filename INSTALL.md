@@ -65,9 +65,9 @@ alias ll="ls -l"
    chown root nginx
    chmod u+s nginx
    ```
-
-#### 二、httpd-2.4.x
 <pre>
+#### 二、httpd-2.4.x
+
    1) http://www.openssl.org/source/openssl-1.0.0g.tar.gz      
       a) ./config --prefix=$MSF_RUNTIME --openssldir=$MSF_APPS/openssl no-threads shared
    2) http://archive.apache.org/dist/httpd/httpd-2.4.7.tar.bz2
@@ -79,7 +79,7 @@ alias ll="ls -l"
       ./configure --prefix=$MSF_APPS/httpd --enable-dav=shared --enable-proxy=shared --enable-proxy-connect=shared --enable-proxy-ftp=shared --enable-proxy-http=shared --enable-so --enable-shared --enable-rewrite=shared --disable-userdir --enable-cache --enable-disk-cache --enable-mem-cache --enable-deflate --enable-ssl --enable-headers --enable-vhost-alias --with-mpm=event --with-mpm=worker --with-mpm=prefork --with-status --with-ssl=$MSF_APPS --enable-module=so --enable-logio=shared --enable-dbd=shared --with-apr=$MSF_APPS --with-apr-util=$MSF_APPS
       a) httpd.conf 末尾增加
          Include /home/labs/conf/apache2/*.conf
-</pre>
+
 
 #### 三、SQLite 3.7.x
    1) http://sqlite.org/sqlite-autoconf-3071000.tar.gz
@@ -178,13 +178,12 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
 
 #### 九、其它
 1）tomcat7优化
-<pre>
+
 JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8
 -server -Xms1024m -Xmx1024m
 -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m
 -XX:MaxPermSize=512m -XX:+DisableExplicitGC"
-</pre>
-<pre>
+
 
 SUPPORTED=en_US.UTF-8:en_US:en:zh_CN.GB18030:zh_CN:zh:zh_TW.big5:zh_TW:zh:ja_JP.UTF-8:ja_JP:ja:ko_KR.eucKR:ko_KR:ko
 
