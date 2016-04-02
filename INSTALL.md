@@ -43,7 +43,7 @@ alias ll="ls -l"
       ftp://xmlsoft.org/libxml2/libxslt-1.1.24.tar.gz
       http://www.monkey.org/~provos/libevent-2.0.10-stable.tar.gz
    7) http://www.ethereal.com/distribution/ethereal-0.99.0.tar.bz2
-   8) perl 
+   8) perl
       -). http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/perl-5.12.3.tar.gz
       a. PERL安装MySQL库
       ```Bash
@@ -56,10 +56,11 @@ alias ll="ls -l"
 
 #### 一、安装Nginx
    0) 软件包准备
+<pre>
       (patch -p0 < ../nginx-upstream-jvm-route/jvm_route.patch)
       https://nginx-upstream-jvm-route.googlecode.com/files/nginx-upstream-jvm-route-0.1.tar.gz
       https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
-
+</pre>
    1) 编译安装步骤
    ```Bash
    cd /data/runtime/temp
@@ -133,7 +134,7 @@ alias ll="ls -l"
      a. http://www.webdav.org/neon/neon-0.28.4.tar.gz
      b. http://apache.etoak.com/apr/apr-1.3.5.tar.bz2
      c. http://apache.etoak.com/apr/apr-util-1.3.7.tar.bz2
-     b. http://apache.etoak.com/subversion/subversion-1.7.4.tar.bz2 
+     b. http://apache.etoak.com/subversion/subversion-1.7.4.tar.bz2
    2) 编译
      a. neon-0.28.4
         ./configure --prefix=$MSF_RUNTIME
@@ -175,7 +176,7 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
 #### 七、安装Resin
    0) 设定临时环境变量
       RESIN_VERSION=4.0.36
-   1) 直接下载: 
+   1) 直接下载:
       http://www.caucho.com/download/resin-pro-${RESIN_VERSION}.tar.gz
       从SVN服务器下载:
       svn co http://runtime.googlecode.com/svn/trunk/resin resin
@@ -213,7 +214,7 @@ a.首先查看主服务器的版本是否是支持热备的版本。然后查看
 server-id=1 //数据库的id这个应该默认是1就不用改动
 log-bin=log_name //日志文件的名称，这里可以制定日志到别的目录 如果没有设置则默认主机名的一个日志名称
 binlog-do-db=db_name //记录日志的数据库
-binlog-ignore-db=db_name //不记录日志的数据库 
+binlog-ignore-db=db_name //不记录日志的数据库
 以上的如果有多个数据库用","分割开
 然后设置同步数据库的用户帐号
 mysql> GRANT REPLICATION SLAVE ON *.*
@@ -260,28 +261,28 @@ mysql> slave start;
 查看数据库的同步情况吧。如果能够成功同步那就恭喜了！
 查看主从服务器的状态
 mysql> SHOW PROCESSLIST\G //可以查看mysql的进程看看是否有监听的进程
-如果日志太大清除日志的步骤如下 
-1.锁定主数据库 
-mysql> FLUSH TABLES WITH READ LOCK; 
-2.停掉从数据库的slave 
-mysql> slave stop; 
-3.查看主数据库的日志文件名和日志文件的position 
-show master status; 
-+---------------+----------+--------------+------------------+ 
-| File | Position | Binlog_do_db | Binlog_ignore_db | 
-+---------------+----------+--------------+------------------+ 
-| louis-bin.001 | 79 | | mysql | 
-+---------------+----------+--------------+------------------+ 
-4.解开主数据库的锁 
-mysql> unlock tables; 
-5.更新从数据库中主数据库的信息 
-mysql> CHANGE MASTER TO 
--> MASTER_HOST='master_host_name', //主服务器的IP地址 
--> MASTER_USER='replication_user_name', //同步数据库的用户 
--> MASTER_PASSWORD='replication_password', //同步数据库的密码 
--> MASTER_LOG_FILE='recorded_log_file_name', //主服务器二进制日志的文件名(前面要求记住的参数) 
--> MASTER_LOG_POS=recorded_log_position; //日志文件的开始位置(前面要求记住的参数) 
-6.启动从数据库的slave 
+如果日志太大清除日志的步骤如下
+1.锁定主数据库
+mysql> FLUSH TABLES WITH READ LOCK;
+2.停掉从数据库的slave
+mysql> slave stop;
+3.查看主数据库的日志文件名和日志文件的position
+show master status;
++---------------+----------+--------------+------------------+
+| File | Position | Binlog_do_db | Binlog_ignore_db |
++---------------+----------+--------------+------------------+
+| louis-bin.001 | 79 | | mysql |
++---------------+----------+--------------+------------------+
+4.解开主数据库的锁
+mysql> unlock tables;
+5.更新从数据库中主数据库的信息
+mysql> CHANGE MASTER TO
+-> MASTER_HOST='master_host_name', //主服务器的IP地址
+-> MASTER_USER='replication_user_name', //同步数据库的用户
+-> MASTER_PASSWORD='replication_password', //同步数据库的密码
+-> MASTER_LOG_FILE='recorded_log_file_name', //主服务器二进制日志的文件名(前面要求记住的参数)
+-> MASTER_LOG_POS=recorded_log_position; //日志文件的开始位置(前面要求记住的参数)
+6.启动从数据库的slave
 mysql> slave start;
 
 
@@ -290,7 +291,7 @@ export LUA_CFLAGS="-I/usr/local/include" LUA_LIBS="-L/usr/local/lib -llua -ldl" 
 
 
 #################
-1. apache + subversion 
+1. apache + subversion
 1) label svn repository files as httpd_sys_content_rw_t:
 
 >> chcon -R -t httpd_sys_content_rw_t /path/to/your/svn/repo
