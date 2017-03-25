@@ -9,8 +9,10 @@
 <pre>useradd -g runtime system
 useradd -g runtime svn
 useradd -g runtime runtime
-chmod ug+w runtime
 </pre>
+   3. 同组用户有读写权限
+     <pre>chmod ug+w runtime
+     </pre>
    3. 编辑 .bashrc
    4. screen -S labs
       screen -X labs
@@ -103,6 +105,7 @@ alias ll="ls -l"
    1) http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.73.tar.gz/from/http://mysql.he.net/
       a. apt-cache search ncurses
       b. sudo apt-get install libncurses5-dev
+      c. yum -y install ncurses-devel ncurses openssl-devel tcp_wrappers-devel bison-devel bison gcc-c++ cmake
    2) 编译
      如果出现/bin/rm: cannot remove `libtoolT': No such file or directory, 需要执行以下三条指令
      > autoreconf --force --install
