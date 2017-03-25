@@ -77,7 +77,6 @@ alias ll="ls -l"
    chown root nginx
    chmod u+s nginx
    ```
-<pre>
 #### 二、httpd-2.4.x
 
    1) http://www.openssl.org/source/openssl-1.0.0g.tar.gz      
