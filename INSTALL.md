@@ -72,10 +72,12 @@ alias ll="ls -l"
 ```Bash
    cd /data/runtime/temp
    git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
+   wget http://www.zlib.net/zlib-1.2.11.tar.gz
+   wget https://ftp.pcre.org/pub/pcre/pcre-8.36.tar.gz
    wget http://nginx.org/download/nginx-1.8.1.tar.gz
    tar zxvf nginx-1.8.1.tar.gz
    export NGINX_VER=1.8.1
-   ./configure --prefix=$MSF_APPS/nginx --pid-path=$MSF_APPS/nginx/nginx.pid --lock-path=$MSF_APPS/nginx/nginx.lock --with-http_ssl_module --with-http_dav_module --with-http_flv_module --with-http_realip_module --with-http_gzip_static_module --with-http_stub_status_module --with-mail --with-mail_ssl_module --with-pcre=$MSF_RUNTIME/temp/pcre-8.36 --with-zlib=$MSF_RUNTIME/temp/zlib-1.2.8 --http-client-body-temp-path=$MSF_RUNTIME/tmp/nginx/client --http-proxy-temp-path=$MSF_RUNTIME/tmp/nginx/proxy --http-fastcgi-temp-path=$MSF_RUNTIME/tmp/nginx/fastcgi --http-uwsgi-temp-path=$MSF_RUNTIME/tmp/nginx/uwsgi --http-scgi-temp-path=$MSF_RUNTIME/tmp/nginx/scgi --add-module=../nginx-sticky-module-ng
+   ./configure --prefix=$MSF_APPS/nginx --pid-path=$MSF_APPS/nginx/nginx.pid --lock-path=$MSF_APPS/nginx/nginx.lock --with-http_ssl_module --with-http_dav_module --with-http_flv_module --with-http_realip_module --with-http_gzip_static_module --with-http_stub_status_module --with-mail --with-mail_ssl_module --with-pcre=$MSF_RUNTIME/temp/pcre-8.36 --with-zlib=$MSF_RUNTIME/temp/zlib-1.2.11 --http-client-body-temp-path=$MSF_RUNTIME/tmp/nginx/client --http-proxy-temp-path=$MSF_RUNTIME/tmp/nginx/proxy --http-fastcgi-temp-path=$MSF_RUNTIME/tmp/nginx/fastcgi --http-uwsgi-temp-path=$MSF_RUNTIME/tmp/nginx/uwsgi --http-scgi-temp-path=$MSF_RUNTIME/tmp/nginx/scgi --add-module=../nginx-sticky-module-ng
 
    # 非root用户，需要从root账号赋予nginx在1024端口好以下进程运行的权限
    chown root nginx
