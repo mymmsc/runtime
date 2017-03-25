@@ -188,10 +188,10 @@ shell> cp support-files/mysql.server /etc/init.d/mysql.server
 vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
 
 2不关闭SELINUX的方法:
-# setenforce 0
-# chcon -t shlib_t /usr/local/apache/modules/libphp5.so
-# service httpd restart
-# setenforce 1
+> setenforce 0
+> chcon -t shlib_t /usr/local/apache/modules/libphp5.so
+> service httpd restart
+> setenforce 1
 
 #### 七、安装Resin
    0) 设定临时环境变量
