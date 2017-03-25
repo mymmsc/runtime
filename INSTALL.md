@@ -186,24 +186,24 @@ shell> cp support-files/mysql.server /etc/init.d/mysql.server
 
   2) 编译
     a. neon-0.28.4
-      ```Bash
+```Bash
       ./configure --prefix=$MSF_RUNTIME
-      ```
+```
 
     b. apr-1.3.5
-      ```Bash
+```Bash
       ./configure --prefix=$MSF_RUNTIME
-      ```
+```
 
     c. apr-util-1.3.7
-      ```Bash
+```Bash
       ./configure --prefix=$MSF_RUNTIME --with-apr=../apr-1.3.5 --with-dbm=db47 --with-sqlite3=$MSF_RUNTIME --with-berkeley-db=$MSF_RUNTIME
-      ```
+```
 
-     b. subversion-1.7.3
-      ```Bash
+    d. subversion-1.7.3
+```Bash
       ./configure --prefix=$MSF_RUNTIME --with-apxs=$MSF_APPS/httpd/bin/apxs --with-apr=$MSF_RUNTIME --with-apr-util=$MSF_RUNTIME --with-sqlite=$MSF_RUNTIME --with-berkeley-db=HEADER:$MSF_RUNTIME/db40/include:LIB_SEARCH_DIRS:$MSF_RUNTIME/db40/lib
-      ```
+```
 
 #### 六、安装 php
    http://www.zlib.net/zlib-1.2.3.tar.gz
