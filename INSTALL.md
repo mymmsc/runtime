@@ -102,9 +102,8 @@ alias ll="ls -l"
       > ../dist/configure --prefix=$MSF_RUNTIME --enable-java
 #### 四、MySQL Server
    1) http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.73.tar.gz/from/http://mysql.he.net/
-      a. apt-cache search ncurses
-      b. sudo apt-get install libncurses5-dev
-      c. yum -y install ncurses-devel ncurses openssl-devel tcp_wrappers-devel bison-devel bison gcc-c++ cmake
+      <pre>yum -y install ncurses-devel ncurses openssl-devel tcp_wrappers-devel bison-devel bison gcc-c++ cmake
+      </pre>
    2) 编译
      如果出现/bin/rm: cannot remove `libtoolT': No such file or directory, 需要执行以下三条指令
      > autoreconf --force --install
