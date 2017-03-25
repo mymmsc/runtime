@@ -101,17 +101,14 @@ alias ll="ls -l"
       > cd build_unix
       > ../dist/configure --prefix=$MSF_RUNTIME --enable-java
 #### 四、MySQL Server
-   1) http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.73.tar.gz/from/http://mysql.he.net/
+   1) https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-boost-5.7.17.tar.gz
+   2) 准备依赖环境
       <pre>yum -y install ncurses-devel ncurses openssl-devel tcp_wrappers-devel bison-devel bison gcc-c++ cmake
       </pre>
    2) 编译
-     如果出现/bin/rm: cannot remove `libtoolT': No such file or directory, 需要执行以下三条指令
-     > autoreconf --force --install
-     > libtoolize --automake --force
-     > automake --force --add-missing
-     > ./configure --prefix=$MSF_APPS/mysql --with-charset=utf8 --without-debug --with-client-ldflags=-all-static --with-mysqld-ldflags=-all-static --with-mysqld-user=dbamysql --with-extra-charsets=all --with-unix-socket-path=$MSF_APPS/mysql --localstatedir=$MSF_RUNTIME/data/mysql --with-tcp-port=18036 --enable-thread-safe-client --with-big-tables --with-readline --with-ssl --with-embedded-server --enable-local-infile --with-plugins=all
-   2.1)
+     <pre>
      cmake -DCMAKE_INSTALL_PREFIX=$MSF_APPS/mysql -DMYSQL_DATADIR=$MSF_DATA/mysql -DSYSCONFDIR=$MSF_RUNTIME/etc -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1  -DWITH_MEMORY_STORAGE_ENGINE=1 -DWITH_READLINE=1  -DMYSQL_UNIX_ADDR=$MSF_APPS/mysql/mysql.sock -DWITH-LIBWRAP=0 -DENABLE_DOWNLOADS=1 -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DDOWNLOAD_BOOST=1 -DWITH_BOOST=$MSF_APPS/boost
+     </pre>
    3) 初始化MySQL
       > mkdir ~/runtime/mysql/etc #复制my.cnf到etc下
       > mkdir ~/runtime/mysql/logs
@@ -207,7 +204,7 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
    ./configure --prefix=$MSF_APPS/resin-pro-${RESIN_VERSION} --with-openssl=$MSF_RUNTIME --with-resin-log=$MSF_RUNTIME/logs/resin --with-resin-init.d=$MSF_APPS/resin-pro-${RESIN_VERSION}/sbin/resin.server
    3) sed -i -e 's/root-directory="."/root-directory="$MSF_RUNTIME\/html\/webapps"/g' $MSF_APPS/resin/conf/resin.xml
 
-
+<pre>
 #### 九、其它
 1）tomcat7优化
 
