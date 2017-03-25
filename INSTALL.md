@@ -206,6 +206,7 @@ shell> cp support-files/mysql.server /etc/init.d/mysql.server
 ```
 
 #### 六、安装 php
+<pre>
    http://www.zlib.net/zlib-1.2.3.tar.gz
    ftp://xmlsoft.org/libxml2/libxml2-2.7.3.tar.gz
    http://downloads.sourceforge.net/sourceforge/mcrypt/libmcrypt-2.6.8.tar.bz2?use_mirror=jaist
@@ -232,8 +233,10 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
 > chcon -t shlib_t /usr/local/apache/modules/libphp5.so
 > service httpd restart
 > setenforce 1
+</pre>
 
 #### 七、安装Resin
+<pre>
    0) 设定临时环境变量
       RESIN_VERSION=4.0.36
    1) 直接下载:
@@ -243,8 +246,10 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
    2) 编译安装
    ./configure --prefix=$MSF_APPS/resin-pro-${RESIN_VERSION} --with-openssl=$MSF_RUNTIME --with-resin-log=$MSF_RUNTIME/logs/resin --with-resin-init.d=$MSF_APPS/resin-pro-${RESIN_VERSION}/sbin/resin.server
    3) sed -i -e 's/root-directory="."/root-directory="$MSF_RUNTIME\/html\/webapps"/g' $MSF_APPS/resin/conf/resin.xml
+</pre>
 
 #### 九、其它
+<pre>
 1）tomcat7优化
 
 JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8
