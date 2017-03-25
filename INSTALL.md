@@ -204,7 +204,6 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
    ./configure --prefix=$MSF_APPS/resin-pro-${RESIN_VERSION} --with-openssl=$MSF_RUNTIME --with-resin-log=$MSF_RUNTIME/logs/resin --with-resin-init.d=$MSF_APPS/resin-pro-${RESIN_VERSION}/sbin/resin.server
    3) sed -i -e 's/root-directory="."/root-directory="$MSF_RUNTIME\/html\/webapps"/g' $MSF_APPS/resin/conf/resin.xml
 
-<pre>
 #### 九、其它
 1）tomcat7优化
 
