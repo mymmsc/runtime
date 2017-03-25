@@ -110,26 +110,39 @@ alias ll="ls -l"
      cmake -DCMAKE_INSTALL_PREFIX=$MSF_APPS/mysql -DMYSQL_DATADIR=$MSF_DATA/mysql -DSYSCONFDIR=$MSF_RUNTIME/etc -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1  -DWITH_MEMORY_STORAGE_ENGINE=1 -DWITH_READLINE=1  -DMYSQL_UNIX_ADDR=$MSF_APPS/mysql/mysql.sock -DWITH-LIBWRAP=0 -DENABLE_DOWNLOADS=1 -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DDOWNLOAD_BOOST=1 -DWITH_BOOST=$MSF_APPS/boost
      </pre>
    3) 初始化MySQL
-      > mkdir ~/runtime/mysql/etc #复制my.cnf到etc下
-      > mkdir ~/runtime/mysql/logs
-      > cd ~/runtime/mysql
-      > bin/mysql_install_db
+      ```Bash
+      mkdir ~/runtime/mysql/etc #复制my.cnf到etc下
+      mkdir ~/runtime/mysql/logs
+      cd ~/runtime/mysql
+      bin/mysql_install_db
+      ```
    4) 启动MySQL
-      > bin/mysqld_safe &
+      ```Bash
+      bin/mysqld_safe &
+      ```
    5) 修改root用户密码
-      > bin/mysqladmin -u root -p password 123456
+      ```Bash
+      bin/mysqladmin -u root -p password 123456
+      ```
       使用 mysqladmin 命令行 修改 用户名密码的方式。最正确的格式如下：
-      > mysqladmin -u root -p password 123456
+      ```Bash
+      mysqladmin -u root -p password 123456
+
       接下来会提示
        Enter password:
       如果你是第一次登陆还没修改过密码，直接回车就可以了（我使用的是mysql5.0版本，4.0以前版本初始密码都是root）。
       这是 root 密码就修改成了  123456 。
       不要使用下面这种格式，否则密码就修改成了 '123456' 这个8位字符，而不是6位的了。
+      ```
+      ```Bash
       > mysqladmin -u root -p password '123456'
+      ```
    6) 创建所有权限的新用户
-     > Grant all privileges on *.* to 'runtime'@'%' identified by ‘123456’ with grant option;
-   999)
-   shell> groupadd mysql
+     ```Bash
+     Grant all privileges on *.* to 'runtime'@'%' identified by ‘123456’ with grant option;
+     ```
+     <pre>
+shell> groupadd mysql
 shell> useradd -r -g mysql -s /bin/false mysql
 shell> cd /usr/local
 shell> tar zxvf /path/to/mysql-VERSION-OS.tar.gz
@@ -147,7 +160,7 @@ shell> chown -R mysql data mysql-files
 shell> bin/mysqld_safe --user=mysql &
 # Next command is optional
 shell> cp support-files/mysql.server /etc/init.d/mysql.server
-
+</pre>
 
 #### 五、安装 Subversion
    1) 下载软件包
