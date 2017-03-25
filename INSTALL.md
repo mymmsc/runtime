@@ -149,10 +149,10 @@ alias ll="ls -l"
       mysqladmin -u root -p password '123456'
       ```
 
-   6) 创建所有权限的新用户
-     ```Bash
-     Grant all privileges on *.* to 'runtime'@'%' identified by ‘123456’ with grant option;
-     ```
+   7) 创建所有权限的新用户
+```Bash
+     grant all privileges on *.* to 'runtime'@'%' identified by ‘123456’ with grant option;
+```
 <pre>
 shell> groupadd mysql
 shell> useradd -r -g mysql -s /bin/false mysql
@@ -177,27 +177,34 @@ shell> cp support-files/mysql.server /etc/init.d/mysql.server
 
 #### 五、安装 Subversion
   1) 下载软件包
+<pre>
      a. http://www.webdav.org/neon/neon-0.28.4.tar.gz
      b. http://apache.etoak.com/apr/apr-1.3.5.tar.bz2
      c. http://apache.etoak.com/apr/apr-util-1.3.7.tar.bz2
      b. http://apache.etoak.com/subversion/subversion-1.7.4.tar.bz2
+</pre>
+
   2) 编译
     a. neon-0.28.4
       ```Bash
       ./configure --prefix=$MSF_RUNTIME
       ```
+
     b. apr-1.3.5
       ```Bash
       ./configure --prefix=$MSF_RUNTIME
       ```
+
     c. apr-util-1.3.7
       ```Bash
       ./configure --prefix=$MSF_RUNTIME --with-apr=../apr-1.3.5 --with-dbm=db47 --with-sqlite3=$MSF_RUNTIME --with-berkeley-db=$MSF_RUNTIME
       ```
+
      b. subversion-1.7.3
       ```Bash
       ./configure --prefix=$MSF_RUNTIME --with-apxs=$MSF_APPS/httpd/bin/apxs --with-apr=$MSF_RUNTIME --with-apr-util=$MSF_RUNTIME --with-sqlite=$MSF_RUNTIME --with-berkeley-db=HEADER:$MSF_RUNTIME/db40/include:LIB_SEARCH_DIRS:$MSF_RUNTIME/db40/lib
       ```
+
 #### 六、安装 php
    http://www.zlib.net/zlib-1.2.3.tar.gz
    ftp://xmlsoft.org/libxml2/libxml2-2.7.3.tar.gz
