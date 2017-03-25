@@ -5,27 +5,31 @@
   groupadd runtime
 ```
 
-   2. 添加用户
+  2. 添加用户
 <pre>
 useradd -g runtime system
 useradd -g runtime svn
 useradd -g runtime runtime
 </pre>
-   3. 同组用户有读写权限
-     <pre>
-     chmod ug+w runtime
-     </pre>
-   3. 编辑 .bashrc
-   4. screen -S labs
-      screen -X labs
+  3. 同组用户有读写权限
+<pre>
+    chmod ug+w runtime
+</pre>
 
-   5. 修改linux的软硬件限制文件/etc/security/limits.conf. 在文件尾部添加如下代码:
-    <pre>
+  4. 编辑 .bashrc
+  5. 同步观察暗转过程
+```Bash
+  screen -S labs
+  screen -X labs
+```
+
+  5. 修改linux的软硬件限制文件/etc/security/limits.conf. 在文件尾部添加如下代码:
+<pre>
     * soft nofile 65535
     * hard nofile 65535
-    </pre>
+</pre>
 
-   6. 修改当前用户的 .bashrc, 添加以下内容
+  6. 修改当前用户的 .bashrc, 添加以下内容
 <pre>
 # User specific aliases and functions
 if [ -f ~/etc/profile.msf ]; then
@@ -36,7 +40,7 @@ alias ls="myls"
 alias ll="ls -l"
 </pre>
 
-   7. 开发环境
+  7. 开发环境
 <pre>
    1) ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2
    2) http://ftp.gnu.org/gnu/m4/m4-1.4.13.tar.bz2
@@ -65,7 +69,7 @@ alias ll="ls -l"
       https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
 </pre>
    1) 编译安装步骤
-   ```Bash
+```Bash
    cd /data/runtime/temp
    git clone https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng.git
    wget http://nginx.org/download/nginx-1.8.1.tar.gz
@@ -76,7 +80,8 @@ alias ll="ls -l"
    # 非root用户，需要从root账号赋予nginx在1024端口好以下进程运行的权限
    chown root nginx
    chmod u+s nginx
-   ```
+```
+
 #### 二、httpd-2.4.x
 
    1) http://www.openssl.org/source/openssl-1.0.0g.tar.gz      
@@ -107,10 +112,12 @@ alias ll="ls -l"
       <pre>
       yum -y install ncurses-devel ncurses openssl-devel tcp_wrappers-devel bison-devel bison gcc-c++ cmake
       </pre>
+
    3) 编译
      <pre>
      cmake -DCMAKE_INSTALL_PREFIX=$MSF_APPS/mysql -DMYSQL_DATADIR=$MSF_DATA/mysql -DSYSCONFDIR=$MSF_RUNTIME/etc -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1  -DWITH_MEMORY_STORAGE_ENGINE=1 -DWITH_READLINE=1  -DMYSQL_UNIX_ADDR=$MSF_APPS/mysql/mysql.sock -DWITH-LIBWRAP=0 -DENABLE_DOWNLOADS=1 -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DDOWNLOAD_BOOST=1 -DWITH_BOOST=$MSF_APPS/boost
      </pre>
+
    4) 初始化MySQL
       ```Bash
       mkdir ~/runtime/mysql/etc #复制my.cnf到etc下
@@ -118,10 +125,12 @@ alias ll="ls -l"
       cd ~/runtime/mysql
       bin/mysql_install_db
       ```
+
    5) 启动MySQL
       ```Bash
       bin/mysqld_safe &
       ```
+
    6) 修改root用户密码
       ```Bash
       bin/mysqladmin -u root -p password 123456
@@ -139,6 +148,7 @@ alias ll="ls -l"
       ```Bash
       mysqladmin -u root -p password '123456'
       ```
+
    6) 创建所有权限的新用户
      ```Bash
      Grant all privileges on *.* to 'runtime'@'%' identified by ‘123456’ with grant option;
@@ -160,7 +170,8 @@ shell> bin/mysql_ssl_rsa_setup              # MySQL 5.7.6 and up
 shell> chown -R root .
 shell> chown -R mysql data mysql-files
 shell> bin/mysqld_safe --user=mysql &
-    7) Next command is optional
+
+   #Next command is optional
 shell> cp support-files/mysql.server /etc/init.d/mysql.server
 </pre>
 
