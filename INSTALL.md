@@ -11,17 +11,18 @@ useradd -g runtime svn
 useradd -g runtime runtime
 </pre>
    3. 同组用户有读写权限
-     <pre>chmod ug+w runtime
+     <pre>
+     chmod ug+w runtime
      </pre>
    3. 编辑 .bashrc
    4. screen -S labs
       screen -X labs
 
    5. 修改linux的软硬件限制文件/etc/security/limits.conf. 在文件尾部添加如下代码:
-    ```bash
+    <pre>
     * soft nofile 65535
     * hard nofile 65535
-    ```
+    </pre>
 
    6. 修改当前用户的 .bashrc, 添加以下内容
 <pre>
@@ -158,7 +159,7 @@ shell> bin/mysql_ssl_rsa_setup              # MySQL 5.7.6 and up
 shell> chown -R root .
 shell> chown -R mysql data mysql-files
 shell> bin/mysqld_safe --user=mysql &
-# Next command is optional
+    7) Next command is optional
 shell> cp support-files/mysql.server /etc/init.d/mysql.server
 </pre>
 
