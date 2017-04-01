@@ -250,6 +250,10 @@ vi /etc/selinux/config 将SELINUX=enforcing 改成SELINUX=disabled 需要重启
    3) sed -i -e 's/root-directory="."/root-directory="$MSF_RUNTIME\/html\/webapps"/g' $MSF_APPS/resin/conf/resin.xml
 </pre>
 
+#### 八、redis
+    0) http://download.redis.io/releases/redis-3.2.8.tar.gz
+    1) make PREFIX=/data/runtime/apps/redis-3.2.8 install
+
 #### 九、其它
 <pre>
 1）tomcat7优化
