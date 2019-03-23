@@ -1,0 +1,2 @@
+rz waiting to receive.\*\*B0100 Run Slient iterm2-send-zmodem.sh
+\*\*B00000000000000                        iterm2-recv-zmodem.sh
